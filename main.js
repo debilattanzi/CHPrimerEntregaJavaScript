@@ -1,11 +1,19 @@
-let turnoIngresado;
-const turno = [1, 2];
+
+function mostrarMensaje(mesaje){
+    let contenedorMensaje = document.getElementById("mensaje");
+    contenedorMensaje.innerHTML = mesaje;
+}
+
 
 function saludar() {
-    let usuario = prompt("Ingrese su Nombre y Apellido");
-    alert("Bienvenido/a a Farmacia Social " + usuario);
+    let usuario = document.getElementById("nombre").value;
 
-    if (turnoIngresado = parseInt(prompt("Ingrese 1 para atención por OBRA SOCIAL o ingrese 2 para atención PARTICULAR."))) {
+    if (usuario === "") {
+        mostrarMensaje("Ingrese su Nombre y Apellido");
+        return;
+    }
+
+    if (turnoIngresado == parseInt(prompt("Ingrese 1 para atención por OBRA SOCIAL o ingrese 2 para atención PARTICULAR."))) {
 
         while (turnoIngresado != turno[0] && turnoIngresado != turno[1]) {
             alert("Por favor ingrese 1 o 2");
