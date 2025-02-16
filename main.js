@@ -14,24 +14,26 @@ function saludar() {
         return;
     }
 
-    mostrarMensaje("Bienvenido/a " + usuario+ ".<br>" +
-        "<button class='btn btn-primary mt-2' onclick=\"seleccionarTurno(1, '" + usuario + "')\">Obra Social</button> " +
-        "<button class='btn btn-secondary mt-2' onclick=\"seleccionarTurno(2, '" + usuario + "')\">Particular</button>");
-
+    mostrarMensaje(`Bienvenido/a ${usuario}.<br>
+        <button class='btn btn-primary mt-2' onclick='seleccionarTurno(1, "${usuario}")'>Obra Social</button> 
+        <button class='btn btn-secondary mt-2' onclick='seleccionarTurno(2, "${usuario}")'>Particular</button>`);
+    
+    
+    document.getElementById("nombre").value = "";
 }
 
 function seleccionarTurno(opcion, usuario) {
     let eleccion
 
-    if (opcion === "1") {
+    if (opcion === 1) {
         eleccion = "OBRA SOCIAL";
-    } else if (opcion === "2") {
+    } else if (opcion === 2) {
         eleccion = "PARTICULAR";
     } 
 
-    mostrarMensaje("Usted ha elegido " + eleccion + " para " + usuario + ".<br>" +
-        "<button class='btn btn-success mt-2' onclick='determinarTurno(\"A\")'>Medicamentos</button> " +
-        "<button class='btn btn-warning mt-2' onclick='determinarTurno(\"B\")'>Otras Prestaciones</button>");
+    mostrarMensaje(`Usted ha elegido ${eleccion} para ${usuario}.<br>
+        <button class='btn btn-success mt-2' onclick='determinarTurno("A")'>Medicamentos</button> 
+        <button class='btn btn-warning mt-2' onclick='determinarTurno("B")'>Otras Prestaciones</button>`);    
 }
     
 
@@ -63,11 +65,12 @@ function mostrarMedicamentos() {
         let medicamento = medicamentos[i];
         let contenedorMedicamento = document.createElement("div");
         contenedorMedicamento.className = "card";
-        contenedorMedicamento.innerHTML = "<div class='card-body'>" +
-            "<h5 class='card-title'>" + medicamento.nombre + "</h5>" +
-            "<p class='card-text'>Precio: $" + medicamento.precio + "</p>" +
-            "<button class='btn btn-primary mt-2' onclick='pedirMedicamento(\"" + medicamento.nombre + "\")'>Pedir</button>" +
-            "</div>";
+        contenedorMedicamento.innerHTML = `<div class='card-body'>
+            <h5 class='card-titulo'>${medicamento.nombre}</h5>
+            <p class='card-texto'>Precio: $${medicamento.precio}</p>
+            <button class='btn btn-primary mt-2' onclick='pedirMedicamento("${medicamento.nombre}")'>Pedir</button>
+        </div>`;
+
         contenedorMedicamentos.appendChild(contenedorMedicamento);
     }
     document.getElementById("mensaje").appendChild(contenedorMedicamentos);
@@ -95,6 +98,8 @@ function mostrarPrestaciones() {
         let prestacionesFiltradas = prestaciones.filter(prestacion =>
             prestacion.nombre.toLowerCase().includes(opcion)
         );
+        document.getElementById("filtroPrestaciones").value = "";
+
         mostrarListadoPrestaciones(prestacionesFiltradas);
     });
 }
@@ -107,10 +112,10 @@ function mostrarListadoPrestaciones(prestacionesFiltradas) {
         prestacionesFiltradas.forEach(prestacion => {
             let contenedorPrestacion = document.createElement("div");
             contenedorPrestacion.className = "card2";
-            contenedorPrestacion.innerHTML = "<h5 class='card-title'> " + prestacion.nombre + "</h5>";
+            contenedorPrestacion.innerHTML = "<h5 class='card-titulo'> " + prestacion.nombre + "</h5>";
             contenedorPrestaciones.appendChild(contenedorPrestacion);
         });
     } else {
-        contenedorPrestaciones.innerHTML = "<p>No se encontraron prestaciones con ese criterio.</p>";
+        contenedorPrestaciones.innerHTML = "<h5>No se encontraron prestaciones con ese criterio.</h5>";
     }
 }

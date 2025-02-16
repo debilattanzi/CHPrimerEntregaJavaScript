@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(190, 178, 178);
+    background-color: rgba(178, 185, 190, 0.425);
     font-family: 'Times New Roman', Times, serif;
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@ body {
 }    
 
 .container {
-    background-color: rgb(255, 255, 255);
+    background-color: rgb(162, 173, 179);
     border-radius: 10px;
     box-shadow: 0 0 10px rgb(0, 0, 0);
     margin: auto;
@@ -22,7 +22,7 @@ h2 {
 }
 
 label {
-    color: rgb(145, 145, 153);
+    color: rgb(15, 15, 17);
     font-size: 30px;
 }
 
@@ -37,14 +37,16 @@ input {
 }
 
 button {
-    background-color: rgb(0, 0, 0);
+    background-color: rgb(10, 10, 10);
     border-radius: 5px;
     color: rgb(255, 255, 255);
-    font-size: 25px;
+    font-size: 30px;
     margin-top: 10px;
     padding: 10px;
     width: 100%;
 }
+
+
 
 #mensaje {    
     color: rgb(0, 0, 0);
@@ -68,7 +70,7 @@ button {
     justify-content: center;
 }
 
-#prestaciones .card {
+#prestaciones.card {
     margin: 10px;
     width: 200px;
 }
@@ -90,12 +92,14 @@ button {
     width: 200px;
 }
 
-.card2 .card-title {
+.card2 .card-titulo {
     color: rgb(0, 0, 0);
     font-size: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
 }
 
-.card2 .card-text {
+.card2 .card-texto {
     color: rgb(145, 145, 153);
     font-size: 15px;
 }
@@ -103,5 +107,9 @@ button {
 #filtrar {
     margin-top: 10px;
 }   
+.card-body {
+    background-color: rgb(62, 118, 145);
+    border-radius: 5px;
+}
 
 
