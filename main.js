@@ -117,3 +117,12 @@ function mostrarListadoPrestaciones(prestacionesFiltradas) {
         contenedorPrestaciones.innerHTML = "<h5>No se encontraron prestaciones con ese nombre.</h5>";
     }
 }
+
+let titulo = document.getElementById("titulo-nosotros");
+titulo.addEventListener("mouseover", function () {
+    titulo.style.color = "#4d4d4d";
+});
+
+titulo.addEventListener("mouseout", function () {
+    titulo.style.color = "#000000";
+});
