@@ -46,8 +46,6 @@ button {
     width: 100%;
 }
 
-
-
 #mensaje {    
     color: rgb(0, 0, 0);
     font-size: 20px;
@@ -57,10 +55,12 @@ button {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin-top: 20px;   
+    font-size: 20px;
 }
 
-#medicamentos .card {
-    margin: 10px;
+#medicamentos.card {
+    margin: 20px;
     width: 200px;
 }
 
@@ -74,6 +74,7 @@ button {
     margin: 10px;
     width: 200px;
 }
+
 
 .ocultar {
     display: none;
@@ -92,16 +93,16 @@ button {
     width: 200px;
 }
 
-.card2 .card-titulo {
+.card.card-titulo {
     color: rgb(0, 0, 0);
-    font-size: 20px;
+    font-size: 30px;
     font-family: Georgia, 'Times New Roman', Times, serif;
 
 }
 
-.card2 .card-texto {
+.card.card-texto {
     color: rgb(145, 145, 153);
-    font-size: 15px;
+    font-size: 10px;
 }
 
 #filtrar {
@@ -142,6 +143,8 @@ h1 {
 }
 
 p {
+    font-size: 1.2em;
+}
+h5 {
     font-size: 1.5em;
 }
-

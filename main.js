@@ -1,6 +1,5 @@
 
-
-function mostrarMensaje(mensaje){
+function mostrarMensaje(mensaje) {
     let contenedorMensaje = document.getElementById("mensaje");
     contenedorMensaje.innerHTML = mensaje;
 }
@@ -17,8 +16,8 @@ function saludar() {
     mostrarMensaje(`Bienvenido/a ${usuario}.<br>
         <button class='btn btn-primary mt-2' onclick='seleccionarTurno(1, "${usuario}")'>Obra Social</button> 
         <button class='btn btn-secondary mt-2' onclick='seleccionarTurno(2, "${usuario}")'>Particular</button>`);
-    
-    
+
+
     document.getElementById("nombre").value = "";
 }
 
@@ -29,33 +28,32 @@ function seleccionarTurno(opcion, usuario) {
         eleccion = "OBRA SOCIAL";
     } else if (opcion === 2) {
         eleccion = "PARTICULAR";
-    } 
+    }
 
     mostrarMensaje(`Usted ha elegido ${eleccion} para ${usuario}.<br>
         <button class='btn btn-success mt-2' onclick='determinarTurno("A")'>Medicamentos</button> 
-        <button class='btn btn-warning mt-2' onclick='determinarTurno("B")'>Otras Prestaciones</button>`);    
+        <button class='btn btn-warning mt-2' onclick='determinarTurno("B")'>Otras Prestaciones</button>`);
 }
-    
+
 
 function determinarTurno(opcion) {
 
 
-        if (opcion === "A") {
-            
-            mostrarMedicamentos();
-        } else if (opcion === "B") {
-            mostrarPrestaciones();
-        }
+    if (opcion === "A") {
+       mostrarMedicamentos();
+    } else{
+        mostrarPrestaciones();
+    }
 }
 
 let medicamentos = [
-    {nombre : 'Aspirina', precio : 100},
-    {nombre : 'Clonazepam', precio : 200},  
-    {nombre : 'Amoxicilina', precio : 300},
-    {nombre : 'Penicilina', precio : 400},
-    {nombre : 'Ciclosporina', precio : 500},
-    {nombre : 'Levotiroxina', precio : 600},
-    
+    { nombre: 'Aspirina', precio: 100 },
+    { nombre: 'Clonazepam', precio: 200 },
+    { nombre: 'Amoxicilina', precio: 300 },
+    { nombre: 'Penicilina', precio: 400 },
+    { nombre: 'Ciclosporina', precio: 500 },
+    { nombre: 'Levotiroxina', precio: 600 },
+
 ]
 
 function mostrarMedicamentos() {
@@ -75,29 +73,27 @@ function mostrarMedicamentos() {
     }
     document.getElementById("mensaje").appendChild(contenedorMedicamentos);
 }
-   
+
 
 function pedirMedicamento(medicamento) {
-    mostrarMensaje("Usted ha pedido " + medicamento + "</b>."); 
-    
+    mostrarMensaje("Usted ha pedido " + medicamento + "</b>.");
+
     mostrarMedicamentos();
-} 
+}
 
 let prestaciones = [
-    {nombre: 'Dermatologia'},
-    {nombre: 'Maquillaje'},
-    {nombre: 'Perfumeria'},
+    { nombre: 'Dermatologia' },
+    { nombre: 'Maquillaje' },
+    { nombre: 'Perfumeria' },
 ]
+
 
 function mostrarPrestaciones() {
     document.getElementById("busquedaPrestaciones").classList.remove("ocultar");
     document.getElementById("busquedaPrestaciones").classList.add("mostrar");
     document.getElementById("filtrar").addEventListener("click", function () {
         let opcion = document.getElementById("filtroPrestaciones").value.trim().toLowerCase();
-
-        let prestacionesFiltradas = prestaciones.filter(prestacion =>
-            prestacion.nombre.toLowerCase().includes(opcion)
-        );
+        let prestacionesFiltradas = prestaciones.filter(prestacion => prestacion.nombre.toLowerCase().includes(opcion));
         document.getElementById("filtroPrestaciones").value = "";
 
         mostrarListadoPrestaciones(prestacionesFiltradas);
@@ -106,16 +102,18 @@ function mostrarPrestaciones() {
 
 function mostrarListadoPrestaciones(prestacionesFiltradas) {
     let contenedorPrestaciones = document.getElementById("prestaciones");
-    contenedorPrestaciones.innerHTML = "";  
+    contenedorPrestaciones.innerHTML = "";
 
     if (prestacionesFiltradas.length > 0) {
         prestacionesFiltradas.forEach(prestacion => {
             let contenedorPrestacion = document.createElement("div");
             contenedorPrestacion.className = "card2";
             contenedorPrestacion.innerHTML = "<h5 class='card-titulo'> " + prestacion.nombre + "</h5>";
+            
+            
             contenedorPrestaciones.appendChild(contenedorPrestacion);
         });
     } else {
-        contenedorPrestaciones.innerHTML = "<h5>No se encontraron prestaciones con ese criterio.</h5>";
+        contenedorPrestaciones.innerHTML = "<h5>No se encontraron prestaciones con ese nombre.</h5>";
     }
 }
